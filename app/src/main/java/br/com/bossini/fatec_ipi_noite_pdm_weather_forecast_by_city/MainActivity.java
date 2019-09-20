@@ -11,23 +11,41 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.LinkedList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private EditText locationEditText;
+    private List <Weather> weatherList;
+    private ListView weatherListView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
+        locationEditText = findViewById(R.id.locationEditText);
+        weatherListView = findViewById(R.id.weatherListView);
+        weatherList = new LinkedList<>();
+        ArrayAdapter <Weather> adapter =
+                new ArrayAdapter<Weather>(
+                        this,
+                        android.R.layout.simple_list_item_1,
+                        weatherList
+                );
+        weatherListView.setAdapter(adapter);
+
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
+        fab.setOnClickListener((v) -> {
+
         });
     }
 
