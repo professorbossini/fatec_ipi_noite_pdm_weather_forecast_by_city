@@ -51,10 +51,20 @@ public class Weather {
                 fusoHorario.getOffset(
                         agora.getTimeInMillis()
                 ));
-        return new SimpleDateFormat("EEEE").format(
+        return new SimpleDateFormat("E hh:mm").format(
                 agora.getTime()
         );
     }
 
-
+    @Override
+    public String toString() {
+        return "Weather{" +
+                "dayOfWeek='" + dayOfWeek + '\'' +
+                ", minTemp='" + minTemp + '\'' +
+                ", maxTemp='" + maxTemp + '\'' +
+                ", humidity='" + humidity + '\'' +
+                ", description='" + description + '\'' +
+                ", iconURL='" + iconURL + '\'' +
+                '}';
+    }
 }
